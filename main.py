@@ -26,13 +26,13 @@ import random
         
 
 class Item():
-    def __init__(self, name, thing_type: material.Things, raity: material.Rarity):
+    def __init__(self, name, thing_type: material.Things, rarity: material.Rarity):
         self.name = name
         self.thing_type = thing_type
-        self.raity = raity
+        self.rarity = rarity
 
     def show_info(self):
-        info = f"Item Name: {self.name}\nType: {self.thing_type.value}\nRarity: {self.raity.value}\n"
+        info = f"Item Name: {self.name}\nType: {self.thing_type.value}\nRarity: {self.rarity.value}\n"
 
 # class Weapon(Item):
 #     def __init__(self, name, thing_type)
@@ -90,7 +90,7 @@ class Player(Character): # TODO: 나중에 body클래스로 부위별 상태 추
     def show_inventory(self): # TODO: 아이템 상세정보, 여러개면 갯수 나타내서 간략화, 아이템 사용 등 추가
         inventory_info = "inventory:\n"
         for item in self.inventory:
-            inventory_info += f"- {item.name} ({item.thing_type.value}, {item.raity.value})\n"
+            inventory_info += f"- {item.name} ({item.thing_type.value}, {item.rarity.value})\n"
         return inventory_info
 
 
