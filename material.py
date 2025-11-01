@@ -1,14 +1,16 @@
 import enum
+# TODO: 이름 소문자로 바꾸기
+
 ###################### 상태 등 이름 #############################
 class Body(enum.Enum):
     '''부위별 데미지, 상태 
     #### 몸부위'''
-    HEAD = "머리"
-    BODY = "몸"
-    LEFT_ARM = "왼팔"
-    RIGHT_ARM = "오른팔"
-    LEFT_LEG = "왼다리"
-    RIGHT_LEG = "오른다리"
+    Head = "머리"
+    Body = "몸"
+    Left_Arm = "왼팔"
+    Right_Arm = "오른팔"
+    Left_Leg = "왼다리"
+    Right_Leg = "오른다리"
 
 class BodyStatus(enum.Enum):
     '''#### 부위별 상태'''
@@ -31,11 +33,6 @@ class PotionType(enum.Enum):
     MANA = "마나약"
     ANTIDOTE = "해독제"
 
-class WeaponType(enum.Enum):
-    '''#### 무기 종류'''
-    SWORD = "검"
-    BOW = "활"
-    HAMMER = "망치"
 
 class ArmorType(enum.Enum):
     '''#### 방어구 종류'''
@@ -57,4 +54,16 @@ class DamageType(enum.Enum): # TODO: 데미지 타입 추가
     SLASHING = "베기"
     PIERCING = "찌르기"
     BLUDGEONING = "타격"
+
+class Sin(enum.Enum):
+    Invidia = "질투"
+    Luxuria = "음욕"
+    Pigritia = "나태"
+    Avaritia = "인색"
+    Gula = "탐욕"
+    Ira = "분노"
+    Superbia = "오만"
+
+
 ###################### 상태 등 이름 #############################
+# 교만 분노 탐욕 인색 나태 음욕 질투
