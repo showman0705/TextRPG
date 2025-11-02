@@ -1,9 +1,5 @@
-import main
-import material
+lst = [2,1,6, 3, 2, 3, 2, 1, 1, 2,1 , 3]
 
+new_list = list(dict.fromkeys(lst))
 
-# class Sword(Weapon):
-#     def __init__(self, name, damage_add, weapon_type: material.WeaponType.SWORD):
-#         self.weapon_type = weapon_type
-
-
+print(new_list)

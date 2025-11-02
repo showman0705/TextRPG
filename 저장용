@@ -1,0 +1,61 @@
+# name = input("이름: ")
+# player = Player(name, level=1,basic_damage=15, basic_defense = 3, max_hp = 100, hp=100)
+# enemy = Invidia_3("질투의 제3권속", level=2, basic_damage=8, basic_defense= 3, hp=100, sin = material.Sin.Invidia)
+
+# def battle(player, enemy):
+#     print(f"플레이어 이름")
+
+# while True:
+#     print(f"\n플레이어 이름: {player.name}")
+#     print(f"{enemy.name}을 만났댜")
+#     print(f"플레이어 HP: {player.hp}")
+#     print(f"{enemy.name} HP: {enemy.hp}")
+#     action = input("행동을 선택하세요: [D] 데미지  [H] 회복  [Q] 종료  [S] 상태창 보기  [I] 인벤토리 보기 : ").lower()
+#     player.get_item(HealingPotion1)  # 테스트용으로 매턴 회복물약 추가
+#     if action == 's':
+#         print(player.show_status())
+#     elif action == 'd':
+#         player.attack(enemy)
+#         if enemy.hp<0:
+#             enemy.hp = 0
+#             print("질투의 제3권속을 물리쳤다!")
+#             enemy.defeat(player)
+#             enemy.hp = 100
+#         enemy.attack(player)
+#         if player.hp<0:
+#             player.hp = 0
+#             print("패배\n")
+#             print(f"결과: \n{player.show_status()}\n{player.show_inventory()}")
+#             break
+#     elif action == 'h':
+#         if HealingPotion1 in player.inventory:
+#             HealingPotion1.use(player)
+#             if player.hp > player.max_hp:
+#                 player.hp = player.max_hp
+#         else:
+#             print("회복 물약이 없음")
+#     elif action == 'i':
+#         print(player.show_inventory())
+#     elif action == 'q':
+#         break
+
+# def main(stdscr):
+#     curses.curs_set(0)
+#     stdscr.nodelay(True)
+
+#     key = stdscr.getch()
+#     h, w = stdscr.getmaxyx()
+
+#     stdscr.clear()
+#     stdscr.addstr(2, int(w/2 - len("Press any button to continue....")/2), "Press any button to continue....")
+#     stdscr.getch()
+#     stdscr.clear()
+#     stdscr.addstr(1, int(w/2-9), "What's your name?")
+#     curses.echo()
+#     name = stdscr.getstr(2, int(w/2 - 5), 20).decode("utf-8")
+#     curses.echo()
+#     player = Player(name, level=1,basic_damage=15, basic_defense = 3, max_hp = 100, hp=100)
+#     curses.noecho()
+#     stdscr.refresh()
+
+#     stdscr.addstr(player.show_status())
