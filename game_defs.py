@@ -8,11 +8,23 @@ def curses_show_status(stdscr, player):
     stdscr.clear()  
     stdscr.addstr(0, 0, "===== 상태창 =====")
     stdscr.addstr(1, 0, player.show_status())
-    stdscr.addstr(8, 0, "아무 키나 누르면 돌아갑니다.")
+    stdscr.addstr(7 , 0, "아무 키나 누르면 돌아갑니다.")
     stdscr.refresh()
-    stdscr.getch() 
+    stdscr.getch()
     stdscr.nodelay(True)
+
+def curses_show_level(stdscr, player):
+    stdscr.nodelay(False)
+    stdscr.clear()
+    stdscr.addstr(0,0, "===== 스킬 레벨업 =====")
+    stdscr.addstr(3, 0, "레벨업할 스킬들")
+    stdscr.addstr(5, 0, "아무 키나 누르면 돌아갑니다.")
+    stdscr.refresh()
+    stdscr.getch()
+    stdscr.nodelay(True)
+
 def curses_show_inventory(stdscr, player): # TODO: 인벤토리창의 길이가 너무 길어지면 오류가 생김 이거 해결
+    key = stdscr.getch()
     stdscr.nodelay(False)
     stdscr.clear()
     stdscr.addstr(0,0, "===== 인벤토리 =====")
@@ -37,6 +49,8 @@ def battle(stdscr, turn, player, enemy): # TODO: battle 함수는 전투를 완�
 
         if key == ord("s"):
             curses_show_status(stdscr, player)
+            if key == ord("l"):
+                curses_show_level(stdscr, player)
             continue    # 스테이터스 표시
 
         if key == ord("i"):

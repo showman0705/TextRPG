@@ -59,3 +59,16 @@
 #     stdscr.refresh()
 
 #     stdscr.addstr(player.show_status())
+
+
+
+
+몬스터 잡고 속죄 + 1
+
+status에서 
+
+죄악  --- ---- ---- ---- ---- --- ----
+스킬1
+스킬2
+스킬3
+커서보이기
