@@ -1,9 +1,8 @@
-from classes import Player, Enemy, HealingPotion
+from entity.item.healingpotion import HealingPotion1
 import material
 
-HealingPotion1 = HealingPotion("Small Healing Potion",  heal_amount=30, thing_type=material.Things.POTION, potion_type=material.PotionType.HEALING, rarity=material.Rarity.COMMON)
 
-def curses_show_status(stdscr, player: Player):
+def curses_show_status(stdscr, player):
     '''curses에서 스텟보여주는 거 한번에 모아놓은 함수 간단하게 만들려고'''
     stdscr.nodelay(False)  
     stdscr.clear()  
@@ -13,7 +12,7 @@ def curses_show_status(stdscr, player: Player):
     stdscr.refresh()
     stdscr.getch() 
     stdscr.nodelay(True)
-def curses_show_inventory(stdscr, player: Player): # TODO: 인벤토리창의 길이가 너무 길어지면 오류가 생김 이거 해결
+def curses_show_inventory(stdscr, player): # TODO: 인벤토리창의 길이가 너무 길어지면 오류가 생김 이거 해결
     stdscr.nodelay(False)
     stdscr.clear()
     stdscr.addstr(0,0, "===== 인벤토리 =====")
@@ -23,7 +22,7 @@ def curses_show_inventory(stdscr, player: Player): # TODO: 인벤토리창의 �
     stdscr.getch()
     stdscr.nodelay(True)
 
-def battle(stdscr, turn, player: Player, enemy: Enemy): # TODO: battle 함수는 전투를 완벽히 하나의 함수로 표현 -> 필요할때마다 호출
+def battle(stdscr, turn, player, enemy): # TODO: battle 함수는 전투를 완벽히 하나의 함수로 표현 -> 필요할때마다 호출
     turn = True
 
     while True:
