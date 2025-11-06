@@ -2,7 +2,7 @@ import curses
 from curses import wrapper
 from pyfiglet import Figlet
 
-def show_title_scr(stdscr):
+def start_game(stdscr):
     curses.curs_set(0)
     stdscr.clear()
     h, w = stdscr.getmaxyx()
@@ -40,19 +40,19 @@ def show_title_scr(stdscr):
             x = int((menu_width - len(title)) / 2)
             y = 2 + i * 2
             if i == current_curs:
-                menu_win.addstr(y, x - len(title) + 1, "<" + title + ">")
+                title = "< " + title + " >"
+                menu_win.addstr(y, x - int(len(title)/2), title, curses.A_BOLD)
             else:
-                menu_win.addstr(y, x - len(title) + 1, title)
-
+                menu_win.addstr(y, x - int(len(title)/2), title, curses.A_DIM)
         menu_win.refresh()
+# 타이틀 메뉴 선택마다 꺽쇠
+
 
         key = menu_win.getch()
-
         if key == curses.KEY_UP:
             current_curs = (current_curs - 1) % len(titles)
         elif key == curses.KEY_DOWN:
             current_curs = (current_curs + 1) % len(titles)
- 
         elif titles[current_curs] == "종료":
             break
         else:
@@ -60,4 +60,4 @@ def show_title_scr(stdscr):
             menu_win.refresh()
             menu_win.getch()
         
-wrapper(show_title_scr)
+wrapper(start_game)
