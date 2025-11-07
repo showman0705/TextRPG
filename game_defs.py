@@ -1,5 +1,7 @@
 from entity.item.healingpotion import HealingPotion1
 import material
+from time import sleep
+import curses
 
 
 def curses_show_status(stdscr, player):
@@ -88,3 +90,77 @@ def battle(stdscr, turn, player, enemy): # TODO: battle 함수는 전투를 완�
                     player.hp = player.max_hp
             else:
                 stdscr.addstr(10,0, "회복물약이 없습니다.")
+
+# import curses
+# from curses import wrapper
+# import material
+# import time
+# import random
+# import entity.char.player as player
+# import entity.char.enemy as enemy
+# import entity.item.item as item
+# import entity.item.healingpotion as healingpotion
+# import game_defs
+
+
+# # showman = Item("showman", thing_type=material.Things.MISC, rarity=material.Rarity.LEGENDARY)
+# showman = item.Item("showman", thing_type=material.Things.MISC, rarity=material.Rarity.EPIC)
+# tooth = item.Item("tooth", thing_type=material.Things.WEAPON, rarity=material.Rarity.COMMON)
+
+
+# # enemy = Enemy("enemy", level=2, basic_damage=12, item_give= showman, basic_defense= 3, hp=100, )
+
+
+
+# def main(stdscr):
+#     curses.curs_set(0)
+#     stdscr.nodelay(True) 
+#     key = stdscr.getch()
+#     h, w = stdscr.getmaxyx()
+#     stdscr.addstr(1, int(w/2-9), "What's your name?")
+#     curses.echo()
+#     name = stdscr.getstr(2, int(w/2 - 5), 20).decode("utf-8")
+#     curses.noecho()
+#     you = player.Player(name, level=1, basic_damage=15, basic_defense=3, max_hp=120, hp = 120, exp = 0, gold = 100)
+#     opponent = enemy.Enemy("opponent", level=1, basic_damage=10, basic_defense=3, hp=100, inventory=[showman, healingpotion.HealingPotion1, tooth])
+
+#     game_defs.battle(stdscr, turn = True, player = you, enemy = opponent)
+
+#     time.sleep(0.1)
+
+# wrapper(main)
+
+
+#################################################################################################################################
+
+
+
+import words
+
+
+
+def save_game(save_idx):
+    save_idx += 1
+    return save_idx
+
+
+def typing_Ani(stdscr, text, y, x, speed):
+    for i, letter in enumerate(text):
+        stdscr.addstr(y, x + i, letter)
+        stdscr.refresh()
+        sleep(speed)
+
+
+
+def type(stdscr, scene: list):
+    y, x = stdscr.getmaxyx()
+    curses.curs_set(0)  # 커서 숨기기
+    stdscr.clear()
+    for i in range(len(scene)):
+        typing_Ani(stdscr, scene[i], int(y/2) ,int(x/2) - int(len(scene[i])/2) , 0.1)
+        i += 1
+        stdscr.getch()
+        stdscr.clear()
+        stdscr.refresh()
+
+

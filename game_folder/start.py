@@ -1,4 +1,5 @@
 import curses
+import game_defs
 from curses import wrapper
 from pyfiglet import Figlet
 
@@ -25,14 +26,14 @@ def start_game(stdscr):
     menu_width = 30
     menu_start_y = int(h / 2)
     menu_start_x = int(w / 2 - menu_width / 2)
-    menu_win = curses.newwin(menu_height, menu_width, menu_start_y, menu_start_x)
-    menu_win.keypad(True)
-    menu_win.box()
 
     titles = ["새 게임","불러오기", "옵션", "종료"]
     current_curs = 0
 
     while True:
+        menu_win = curses.newwin(menu_height, menu_width, menu_start_y, menu_start_x)
+        menu_win.keypad(True)
+        menu_win.box()
         menu_win.clear()
         menu_win.box()
 
@@ -47,17 +48,21 @@ def start_game(stdscr):
         menu_win.refresh()
 # 타이틀 메뉴 선택마다 꺽쇠
 
-
         key = menu_win.getch()
         if key == curses.KEY_UP:
             current_curs = (current_curs - 1) % len(titles)
         elif key == curses.KEY_DOWN:
             current_curs = (current_curs + 1) % len(titles)
+        elif titles[current_curs] == "새 게임":
+            stdscr.clear()
+            menu_win.clear()
+            menu_win.refresh()
+            stdscr.touchwin()
+            stdscr.refresh()
+            game_defs.sleep(1)
+            break
+
+            
         elif titles[current_curs] == "종료":
             break
-        else:
-            menu_win.addstr(menu_height - 2, 2, f"{titles[current_curs]}")
-            menu_win.refresh()
-            menu_win.getch()
-        
-wrapper(start_game)
+    

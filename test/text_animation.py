@@ -10,9 +10,8 @@ def typing_Ani(stdscr, text, y, x, speed):
 def type(stdscr):
     curses.curs_set(0)  # 커서 숨기기
     stdscr.clear()
-    
     typing_Ani(stdscr, "hello world asdhjfkfeaekjfja", 5, 10, 0.1)
-    
     stdscr.getch()
 
-curses.wrapper(type)
+
+

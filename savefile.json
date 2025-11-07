@@ -1,0 +1,20 @@
+{
+    "player": {
+        "name": "Showman",
+        "level": 5,
+        "hp": 120,
+        "max_hp": 120,
+        "basic_damage": 15,
+        "inventory": [
+            "Potion",
+            "Sword"
+        ]
+    },
+    "enemy": {
+        "name": "Goblin",
+        "level": 2,
+        "hp": 60,
+        "basic_defense": 3
+    },
+    "current_stage": 1
+}

@@ -72,3 +72,20 @@ status에서
 스킬2
 스킬3
 커서보이기
+
+
+
+
+
+ANSI 이스케이프 시퀀스
+
+
+
+
+스토리같은거는 json으로 {
+    A : fajdagag,
+    B : fdfjkahfla,
+
+}
+
+A 출력, 전투, B 출력 등등
