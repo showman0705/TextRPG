@@ -1,5 +1,5 @@
 from entity.item.potion import Potion
-import material
+import entity.material as material
 
 class HealingPotion(Potion):
     def __init__(self, name, heal_amount, thing_type: material.Things.POTION, potion_type: material.PotionType.HEALING, rarity: material.Rarity):

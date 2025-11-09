@@ -1,7 +1,9 @@
 import curses
-import game_defs
+import defs
 from curses import wrapper
 from pyfiglet import Figlet
+import chapter0
+import 
 
 def start_game(stdscr):
     curses.curs_set(0)
@@ -59,10 +61,14 @@ def start_game(stdscr):
             menu_win.refresh()
             stdscr.touchwin()
             stdscr.refresh()
-            game_defs.sleep(1)
-            break
-
+            while True: # 게임 시작
+                key = stdscr.getch()
+                
+        elif titles[current_curs] == "불러오기"
+            menu_win.clear()
+            
             
         elif titles[current_curs] == "종료":
             break
     
+

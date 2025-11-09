@@ -1,4 +1,4 @@
-import material
+import entity.material as material
 
 class Item():  
     def __init__(self, name: str, thing_type: material.Things, rarity: material.Rarity):
