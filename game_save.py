@@ -1,32 +1,22 @@
-import json
-from curses import wrapper
-import time
+"""Compatibility layer that forwards to :class:`text_rpg.save.manager.SaveManager`."""
 
-save_data = []
+from __future__ import annotations
 
-def save_game_data():
-    '''게임 데이터 저장 함수'''
-    with open('C:\\Users\\showm\\TextRPG\\savefile.json', 'r') as f:
-        save_data = json.load(f)
-        save_data['save'] += 1
-    with open('C:\\Users\\showm\\TextRPG\\savefile.json', 'w') as f:
-        json.dump(save_data, f, indent= 4, ensure_ascii=False)
+from text_rpg.save.manager import SaveManager
+from text_rpg.state import GameState
+from text_rpg.story import run_chapter
 
-def new_save(i):
-    '''새 게임'''
-    save_json = {
-    "save" : 1 
-}
-    for save in range(4):
-        save_file = f"save{save}"
-        
-    with open(save_data[], 'w') as f:
-        json.dump(save_json, f, indent = 4, ensure_ascii=False)
-    
+_DEFAULT_MANAGER = SaveManager()
 
-def continue_game(stdscr, save, current, chapter):
-    '''불러오기'''
-    if save == current:
-        type(stdscr, chapter)
-        wrapper(save_game_data)
-        time.sleep(1)
+
+def save_game_data(state: GameState, slot: int = 1) -> None:
+    _DEFAULT_MANAGER.save(state, slot=slot)
+
+
+def new_save(state: GameState, slot: int = 1) -> None:
+    _DEFAULT_MANAGER.save(state, slot=slot)
+
+
+def continue_game(stdscr: "curses._CursesWindow", slot: int = 1) -> None:
+    state = _DEFAULT_MANAGER.load(slot)
+    run_chapter(stdscr, state, autosave=_DEFAULT_MANAGER.autosave)

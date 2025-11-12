@@ -1,10 +1,15 @@
-import curses
+"""Top-level launcher for the TextRPG prototype."""
+
+from __future__ import annotations
+
 from curses import wrapper
-from game_folder import start
-import defs
-import words
 
-def game_play(stdscr):
-    wrapper(start.start_game)
+from text_rpg.app import run
 
-wrapper(game_play)
+
+def main() -> None:
+    wrapper(run)
+
+
+if __name__ == "__main__":
+    main()
